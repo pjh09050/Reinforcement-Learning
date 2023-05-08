@@ -49,7 +49,7 @@ class QAgent():
     def state(self, s):
         state = 0
         if len(s) == 0:
-            state = 0
+            state = 1
         else:
             state += int("".join([str(bit) for bit in s]), 2)
         return state
@@ -73,12 +73,12 @@ class QAgent():
         return r
 
     def anneal_eps(self):
-        self.eps -= 0.01
+        self.eps -= 0.001
         self.eps = max(self.eps, 0.1)
 
     def show_table(self):
         q_lst = self.q_table.tolist()
-        print(q_lst)
+        #print(q_lst)
 
 def main():
     env = LR_world()

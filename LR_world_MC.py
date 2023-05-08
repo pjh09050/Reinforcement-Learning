@@ -25,12 +25,8 @@ class LR_world():
             else:
                 reward = -1
             self.move_left()
-            
         else:
-            if self.x == [1, 1, 1, 1, 1]:
-                reward = -1000
-            else:
-                reward = +1
+            reward = +1
             self.move_right()
 
         done = self.is_done()
@@ -61,18 +57,18 @@ class QAgent():
     def state(self, s):
         state = 0
         if len(s) == 0:
-            state = 0
+            state = 1
         else:
             state += int("".join([str(bit) for bit in s]), 2)
         return state
 
     def select_action(self, s):
-        x = self.state(s)
+        k = self.state(s)
         coin = random.random()
         if coin < self.eps:
             action = random.randint(0,1)
         else:
-            action_val = self.q_table[x,:]
+            action_val = self.q_table[k,:]
             action = np.argmax(action_val)
         return action
 
@@ -91,7 +87,7 @@ class QAgent():
 
     def show_table(self):
         q_lst = self.q_table.tolist()
-        print(q_lst)
+        #print(q_lst)
         
 def main():
     env = LR_world()
@@ -120,7 +116,7 @@ def main():
         if score == 999.0:
             best_epi.append(n_epi)
 
-        if n_epi%10==0 or n_epi<10:
+        if n_epi%10==0:
             print("n_episode : {}, score : {:.1f}".format(n_epi, score))
             agent.show_table()
 
@@ -130,7 +126,6 @@ def main():
 
     print("\nBest table score : {:.1f}, best_episode 갯수: {}".format(best_score, len(best_epi)))
     print('Best table :', best_table)
-
 
 if __name__ == "__main__":
     main()
