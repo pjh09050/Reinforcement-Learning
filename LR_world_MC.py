@@ -109,7 +109,7 @@ def main():
     best_score = -float('inf')
     best_epi = []
 
-    for n_epi in range(1000):
+    for n_epi in range(15000):
         done = False
         history = []
         score = 0.0

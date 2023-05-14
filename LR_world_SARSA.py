@@ -85,7 +85,7 @@ class QAgent():
 
     def anneal_eps(self):
         self.eps -= 0.001
-        self.eps = max(self.eps, 0.3) # 0.2랑 차이가 생각보다 큼
+        self.eps = max(self.eps, 0.2) # 0.2랑 차이가 생각보다 큼
 
     def show_table(self):
         q_lst = self.q_table.tolist()
@@ -97,7 +97,7 @@ def main():
     best_score = -float('inf')
     best_epi = []
 
-    for n_epi in range(10000):
+    for n_epi in range(15000):
         done = False
         score = 0.0
         

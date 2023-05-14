@@ -96,7 +96,7 @@ def main():
     best_score = -float('inf')
     best_epi = []
 
-    for n_epi in range(10000):
+    for n_epi in range(15000):
         done = False
         score = 0.0
         
