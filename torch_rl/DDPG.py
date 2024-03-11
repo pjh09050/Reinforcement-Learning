@@ -105,9 +105,9 @@ def main():
     env = gym.make('Pendulum-v1')
     memory = ReplayBuffer()
 
-    q, q_target = QNet(), QNet()
+    q, q_target = QNet(), QNet() # critic network
     q_target.load_state_dict(q.state_dict())
-    mu, mu_target = MuNet(), MuNet()
+    mu, mu_target = MuNet(), MuNet() # actor network
     mu_target.load_state_dict(mu.state_dict())
 
     score = 0.0
